@@ -11,6 +11,9 @@ main,footer{position:relative;z-index:1}
 .hero-bottom p{color:#0d2b31;text-shadow:0 1px 3px rgba(244,247,244,.85)}
 .hero-orb{display:none}
 .hero-line{background:rgba(6,31,43,.25)}
+/* botão ↓ centralizado no hero */
+.hero .hero-bottom{position:static}
+.hero .circle-link{position:absolute;left:50%;bottom:38px;transform:translateX(-50%)}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero-orb,.card,.contact-icon{animation:none;transition:none}.card:hover,.card:focus-visible{transform:translateX(var(--x)) rotate(0deg)}}@media(max-width:760px){.header{padding:0 6vw}.header nav{display:none}.hero{min-height:590px;padding:55px 8vw 35px}.hero-orb{width:95vw;right:-38vw;top:9vw;opacity:.65}.hero h1{font-size:clamp(82px,23vw,145px)}.hello{margin-top:110px}.section{padding:72px 8vw}.about,.skills{grid-template-columns:1fr;gap:32px}.experience article{grid-template-columns:1fr!important;gap:18px!important}.section-intro{display:block}.section-intro>p:last-child{margin-top:20px}.deck{height:350px;width:calc(100% + 16vw);margin-left:-8vw;overflow-x:auto;display:flex;align-items:center;justify-content:flex-start;gap:14px;padding:12px 8vw 18px;scroll-snap-type:x mandatory;perspective:none}.card{position:relative;flex:0 0 205px;height:275px;transform:rotate(0deg)!important;transform-origin:center;scroll-snap-align:center}.card:hover,.card:focus-visible{transform:translateY(-10px)!important}.skill-list>div{grid-template-columns:32px 1fr}.skill-list p{grid-column:2}.contact{padding:80px 20px}footer{padding:20px 8vw}.header-contact{font-size:11px}}
 /* ===== Paleta fria arquitetônica — verde-petróleo / turquesa ===== */
 :root{
