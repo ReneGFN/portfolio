@@ -10,8 +10,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Barlow+Condensed:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
   </head>
   <body>
+    <div id="cube-grid" aria-hidden="true"></div>
     <a class="skip-link" href="#inicio">Pular para o conteúdo</a>
     <header class="header">
       <a class="logo" href="#inicio" aria-label="Ir ao início">RG<span>.</span></a>
@@ -82,10 +91,10 @@
         <p class="tag">TEM UM PROJETO EM MENTE?</p>
         <h2>Vamos criar algo<br /><em>memorável.</em></h2>
         <div class="contact-icons" style="display:flex;justify-content:center;gap:18px">
-          <a class="contact-icon" href="mailto:rene06ferreira@hotmail.com" aria-label="Enviar e-mail pelo Outlook" title="Enviar e-mail" style="display:grid;place-items:center;width:54px;height:54px;border:1px solid #17221e;border-radius:50%;color:#17221e">
+          <a class="contact-icon" href="mailto:rene06ferreira@hotmail.com" aria-label="Enviar e-mail pelo Outlook" title="Enviar e-mail" style="display:grid;place-items:center;width:54px;height:54px;border:1px solid #061F2B;border-radius:50%;color:#061F2B">
             <svg viewBox="0 0 24 24" width="25" height="25" aria-hidden="true" fill="currentColor"><path d="M3 5.5 10.5 12 3 18.5V5.5Zm1.7-1.6h14.6c.94 0 1.7.76 1.7 1.7v13c0 .94-.76 1.7-1.7 1.7H4.7c-.94 0-1.7-.76-1.7-1.7v-13c0-.94.76-1.7 1.7-1.7Zm.18 1.8L12 11.45 19.12 5.7H4.88ZM19.2 18.5V7.03l-6.64 5.38a.9.9 0 0 1-1.12 0L4.8 7.03V18.5h14.4Z"/></svg>
           </a>
-          <a class="contact-icon" href="https://wa.me/5531996265552" target="_blank" rel="noreferrer" aria-label="Conversar pelo WhatsApp" title="Conversar pelo WhatsApp" style="display:grid;place-items:center;width:54px;height:54px;border:1px solid #17221e;border-radius:50%;color:#17221e">
+          <a class="contact-icon" href="https://wa.me/5531996265552" target="_blank" rel="noreferrer" aria-label="Conversar pelo WhatsApp" title="Conversar pelo WhatsApp" style="display:grid;place-items:center;width:54px;height:54px;border:1px solid #061F2B;border-radius:50%;color:#061F2B">
             <svg viewBox="0 0 24 24" width="27" height="27" aria-hidden="true" fill="currentColor"><path d="M20.52 3.48A11.88 11.88 0 0 0 12.07 0C5.5 0 .16 5.34.16 11.91c0 2.1.55 4.15 1.6 5.96L.06 24l6.29-1.65a11.9 11.9 0 0 0 5.7 1.45h.01c6.56 0 11.9-5.34 11.9-11.91 0-3.18-1.24-6.16-3.44-8.41Zm-8.46 18.3a9.88 9.88 0 0 1-5.04-1.38l-.36-.21-3.73.98 1-3.63-.24-.37a9.85 9.85 0 0 1-1.52-5.26c0-5.46 4.44-9.9 9.9-9.9 2.64 0 5.11 1.03 6.98 2.9a9.82 9.82 0 0 1 2.9 6.99c0 5.46-4.44 9.89-9.89 9.89Zm5.42-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.38-1.47a8.94 8.94 0 0 1-1.65-2.05c-.17-.3-.02-.46.13-.6.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.47 0 1.46 1.07 2.87 1.21 3.07.15.2 2.1 3.2 5.09 4.5.71.3 1.27.48 1.7.61.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></svg>
           </a>
         </div>
@@ -93,5 +102,26 @@
     </main>
     <footer><span>© <span id="year"></span> Renê Guimarães</span><span>Feito com intenção.</span></footer>
     <script src="script.js"></script>
+    <script type="module">
+      import { initCubeGrid } from './assets/cube-grid.js';
+
+      const mount = document.querySelector('#cube-grid');
+      if (mount) {
+        // Config exposta — ajuste aqui sem mexer no módulo:
+        initCubeGrid(mount, {
+          gridSize: 44,          // nº de cubos por lado
+          colorBase: '#F4F7F4',  // cubo em repouso (branco gelo)
+          colorHigh: '#E9EE72',  // cubo no pico da onda (amarelo-limão — destaque)
+          backgroundGradient: ['#2F6F70', '#28B8C5'], // degradê verde-petróleo -> turquesa
+          backgroundGrain: 0.05, // granulação leve sobre o degradê
+          gap: 0.06,             // folga entre cubos (deixa o degradê aparecer nos canais)
+          exposure: 1.2,         // tom fiel à paleta (menos "estourado")
+          waveMaxHeight: 0.5,    // altura máxima da onda
+          waveSpeed: 6,          // velocidade da frente de onda
+          cameraRadius: 12,      // "zoom" (menor = mais perto)
+          idle: true,            // ondas automáticas quando o mouse fica parado
+        });
+      }
+    </script>
   </body>
 </html>
