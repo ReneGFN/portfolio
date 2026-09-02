@@ -112,11 +112,10 @@
           gridSize: 44,          // nº de cubos por lado
           colorBase: '#FFFFFF',  // cubo em repouso
           colorHigh: '#FFFFFF',  // cubo no pico da onda
-          backgroundGradient: ['#2F6F70', '#28B8C5'], // degradê verde-petróleo -> turquesa
-          backgroundGrain: 0.05, // granulação leve sobre o degradê
-          gap: 0.008,            // grid encostado (sem linhas do fundo entre os cubos)
-          exposure: 1.3,         // tom fiel à paleta (menos "estourado")
-          waveMaxHeight: 0.35,   // altura máxima da onda (mais sutil, não abre vão)
+          background: '#dcdedc', // fundo neutro (o grid cobre a tela toda; qualquer fresta fica invisível)
+          gap: 0.008,            // grid encostado
+          exposure: 1.3,
+          waveMaxHeight: 0.22,   // onda bem baixa: não abre vão entre os cubos
           waveSpeed: 6,          // velocidade da frente de onda
           cameraRadius: 12,      // "zoom" (menor = mais perto)
           idle: true,            // ondas automáticas quando o mouse fica parado
